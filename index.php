@@ -1,42 +1,41 @@
 abstract class Machine{
 
-    protected function moveSterigth(){
+    public function powerOn(){
+        <!-- Запуск двигателя -->
+    }
+ 
+    public function powerOff(){
+        <!-- Отсановка двигателя  -->
+    }
+
+    public function moveSterigth(){
         <!-- Движение прямо -->
     }
 
-    protected function moveForward(){
+    public function moveForward(){
         <!-- Движение назад -->
     }
 
-    protected function turnLeft(){
+    public function turnLeft(){
         <!-- Поворот налево -->
     }
 
-    protected function turnRigth(){
+    public function turnRigth(){
         <!-- Поворот направо -->
     }
-
-    public $fuel = 100;
 
 }
 
 class Car extends Machine{
     public $nitro = 100;
 
-    public static 
 
     public function checkNitro(){
         return $this->nitro > 0;
     }
 
     public function useNitro(){
-        if ($this->checkNitro){
-            parent:useNitro;
-            $this->speed *= 0.2;
-            $this->nitro -= 10;
-        }
     }
-    
 }
 
 interface TankInterface(){
@@ -71,10 +70,9 @@ class Spec extends Machine{
     }
 }
 
-$car = new Car();
-$panzar = new Tank();
-$buldozer = new Spec();
+$machine = new Spec;
 
-$car->moveSterigth();
-
-
+function testMachine(Machine $machine){
+    $machine->moveSterigth();
+    $machine->moveLadle();
+}
