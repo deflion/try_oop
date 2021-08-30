@@ -1,24 +1,29 @@
-class Machine{
-    public $fuel = 100;
-    public function moveSterigth(){
+abstract class Machine{
+
+    protected function moveSterigth(){
         <!-- Движение прямо -->
     }
 
-    public function moveForward(){
+    protected function moveForward(){
         <!-- Движение назад -->
     }
 
-    public function turnLeft(){
+    protected function turnLeft(){
         <!-- Поворот налево -->
     }
 
-    public function turnRigth(){
+    protected function turnRigth(){
         <!-- Поворот направо -->
     }
+
+    public $fuel = 100;
+
 }
 
 class Car extends Machine{
     public $nitro = 100;
+
+    public static 
 
     public function checkNitro(){
         return $this->nitro > 0;
@@ -27,15 +32,16 @@ class Car extends Machine{
     public function useNitro(){
         if ($this->checkNitro){
             parent:useNitro;
-            $this->speed *= 0.3;
+            $this->speed *= 0.2;
             $this->nitro -= 10;
         }
     }
     
 }
 
-class Tank extends Machine{
-    public $bullet = 5;
+interface TankInterface(){
+    const bullet = 5;
+    
     public function moveTurelLeft(){
         <!-- Поворот башни влево  -->
     }
@@ -55,10 +61,20 @@ class Tank extends Machine{
     }
 }
 
+class Tank extends Machine implements TankInterface{
+    
+}
+
 class Spec extends Machine{
     public function moveLadle(){
         <!-- Движение ковшом  -->
     }
 }
+
+$car = new Car();
+$panzar = new Tank();
+$buldozer = new Spec();
+
+$car->moveSterigth();
 
 
