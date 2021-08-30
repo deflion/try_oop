@@ -17,7 +17,7 @@ class Machine{
     }
 }
 
-class Car{
+class Car extends Machine{
     public $nitro = 100;
 
     public function checkNitro(){
@@ -34,7 +34,7 @@ class Car{
     
 }
 
-class Tank {
+class Tank extends Machine{
     public $bullet = 5;
     public function moveTurelLeft(){
         <!-- Поворот башни влево  -->
@@ -55,7 +55,7 @@ class Tank {
     }
 }
 
-class Spec{
+class Spec extends Machine{
     public function moveLadle(){
         <!-- Движение ковшом  -->
     }
