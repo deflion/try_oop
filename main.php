@@ -18,8 +18,18 @@ class Machine{
 }
 
 class Car{
-    public function Nitro(){
-        <!-- Заккись азота -->
+    public $nitro = 100;
+
+    public function checkNitro(){
+        return $this->nitro > 0;
+    }
+
+    public function useNitro(){
+        if ($this->checkNitro){
+            parent:useNitro;
+            $this->speed *= 0.3;
+            $this->nitro -= 10;
+        }
     }
     
 }
