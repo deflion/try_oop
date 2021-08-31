@@ -25,19 +25,13 @@
             echo ("Движение направо\n");
         }
 
-    }
-
-    class Car extends Machine{
-        public $nitro = 100;
-
-        public function checkNitro(){
-            return $this->nitro > 0;
+        protected function horn(){
+            echo $this->horhSong;
         }
 
-        public function useNitro(){
-            
-        }
     }
+
+
 
     abstract class AbstractTank extends Machine {
         const bullet = 5;
@@ -69,12 +63,37 @@
         }
     }
 
-    $machine = new Spec;
+    class Car extends Machine{
+        protected $hornSong = "longSong";
+        public $nitro = 100;
 
-    function testMachine(Machine $machine){
-        $machine->moveSterigth();
-        $machine->moveLadle();
+        public function checkNitro(){
+            return $this->nitro > 0;
+        }
+
+        public function useNitro(){
+
+            echo ("Осталось азота: " . $this->nitro-10 . "%\n");
+            $this->nitro -= 10;
+        }
     }
 
-    testMachine($machine);
+    $machine = new Tank;
+    $car = new Car;
+    
+    
+    function testMachine(Machine $machine){
+        $machine->moveSterigth();
+        $machine->moveTurelLeft();
+    }
+
+    function testCar(Machine $car){
+        $car->powerOn();
+        $car->moveSterigth();
+        $car->useNitro();
+        $car->useNitro();
+        $car->useNitro();
+    }
+    testCar($car);
+    // testMachine($machine);
 
