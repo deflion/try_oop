@@ -1,78 +1,80 @@
-abstract class Machine{
+<?
+    abstract class Machine{
 
-    public function powerOn(){
-        <!-- Запуск двигателя -->
-    }
- 
-    public function powerOff(){
-        <!-- Отсановка двигателя  -->
-    }
-
-    public function moveSterigth(){
-        <!-- Движение прямо -->
-    }
-
-    public function moveForward(){
-        <!-- Движение назад -->
-    }
-
-    public function turnLeft(){
-        <!-- Поворот налево -->
-    }
-
-    public function turnRigth(){
-        <!-- Поворот направо -->
-    }
-
-}
-
-class Car extends Machine{
-    public $nitro = 100;
-
-
-    public function checkNitro(){
-        return $this->nitro > 0;
-    }
-
-    public function useNitro(){
-    }
-}
-
-interface TankInterface(){
-    const bullet = 5;
+        public function powerOn(){
+            echo ("Двигатель запушен\n");
+        }
     
-    public function moveTurelLeft(){
-        <!-- Поворот башни влево  -->
-    }
-    
-    public function moveTurelRigth(){
-        <!-- Поворот башни вправо -->
+        public function powerOff(){
+            echo ("Двигатель остановлен\n"); 
+        }
+
+        public function moveSterigth(){
+            echo ("Движение вперед\n");
+        }
+
+        public function moveForward(){
+            echo ("Движение назад\n");
+        }
+
+        public function turnLeft(){
+            echo ("Поворот налево\n");
+        }
+
+        public function turnRigth(){
+            echo ("Движение направо\n");
+        }
+
     }
 
-    public function fire(){
-        if ($this->checkBullets){
-            parent::fire;
+    class Car extends Machine{
+        public $nitro = 100;
+
+        public function checkNitro(){
+            return $this->nitro > 0;
+        }
+
+        public function useNitro(){
+            
         }
     }
 
-    public function checkBullets(){
-        return $this->bullets > 0;
+    abstract class AbstractTank extends Machine {
+        const bullet = 5;
+        
+        public function moveTurelLeft(){
+            echo ("Поворот башни влево\n");
+        }
+        
+        public function moveTurelRigth(){
+            echo ("Поворот башни вправо\n");
+        }
+
+        public function fire(){
+            // Выстрел
+        }
+
+        public function checkBullets(){
+            return $this->bullets > 0;
+        }
     }
-}
 
-class Tank extends Machine implements TankInterface{
-    
-}
-
-class Spec extends Machine{
-    public function moveLadle(){
-        <!-- Движение ковшом  -->
+    class Tank extends AbstractTank {
+        
     }
-}
 
-$machine = new Spec;
+    class Spec extends Machine{
+        public function moveLadle(){
+            echo ("Движение ковшом\n");
+        }
+    }
 
-function testMachine(Machine $machine){
-    $machine->moveSterigth();
-    $machine->moveLadle();
-}
+    $machine = new Spec;
+
+    function testMachine(Machine $machine){
+        $machine->moveSterigth();
+        $machine->moveLadle();
+    }
+
+    testMachine($machine);
+
